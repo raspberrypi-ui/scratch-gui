@@ -137,6 +137,8 @@ In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm
 
 node_modules/.bin/electron-rebuild
 
+Copy ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm/node_modules/nodeimu/out/NodeIMU.node to /usr/lib/scratch3/
+
 npm run build
 
 
