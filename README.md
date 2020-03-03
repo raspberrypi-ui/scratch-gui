@@ -8,9 +8,9 @@ Prepare image
 
 Install SSH key for access to raspberrypi-ui GitHub
 
-sudo apt install nodered snapd squashfs-tools closure-compiler
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)	 (run without local repo overrides)
 
-update-nodejs-and-nodered
+sudo apt install snapd squashfs-tools closure-compiler
 
 Reboot
 
@@ -54,7 +54,17 @@ to
 
     const defaultArchs = [“armv7l”];
     
+or to 
+
+    const defaultArchs = ["arm64"];
     
+In scripts/electron-builder-wrapper.js, add the section
+
+    case 'linux':
+        return ['appimage'];
+
+to the calculateTargets function
+
 
 In ~/scratch-desktop/node_modules
 ---------------------------------
@@ -91,27 +101,7 @@ In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-blocks
 In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm
 ---------------------------------------------------------------------
 
-npm install --save-dev electron-rebuild
-
-npm install --save node-loader
-
-npm install --save --ignore-scripts nodeimu
-
-In package.json, replace “browser” section with 
-
-    “browser”: {
-	    “fs”: false,
-	    “child_process”: false
-    },
-
-In webpack.config.js, add 
-
-    {
-	    test: /\.node$/,
-	    loader: ‘node-loader’
-    },
-    
-to const base = module: rules: section
+cp ~/scratch-gui/node_modules/scratch-vm/package.json .
 
 npm install
 
@@ -122,22 +112,6 @@ cp -r ~/scratch-gui/node_modules/scratch-vm/src/extensions/* src/extensions/
 cp ~/scratch-gui/node_modules/scratch-vm/src/extension-support/* src/extension-support/
 
 [cp ~/scratch-gui/node_modules/scratch-vm/src/engine/* src/engine/]
-
-
-In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm/node_modules/nodeimu
-------------------------------------------------------------------------------------------
-
-npm install nan
-
-
-In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm
----------------------------------------------------------------------
-
-node_modules/.bin/electron-rebuild
-
-Copy ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm/node_modules/nodeimu/out/NodeIMU.node to /usr/lib/scratch3/
-
-npm run build
 
 
 In ~/scratch-desktop/node_modules/scratch-gui
