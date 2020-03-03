@@ -123,8 +123,6 @@ cp ~/scratch-gui/node_modules/scratch-vm/src/extension-support/* src/extension-s
 
 [cp ~/scratch-gui/node_modules/scratch-vm/src/engine/* src/engine/]
 
-[cp ~/scratch-gui/node_modules/scratch-vm/src/io/* src/io/]
-
 
 In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm/node_modules/nodeimu
 ------------------------------------------------------------------------------------------
