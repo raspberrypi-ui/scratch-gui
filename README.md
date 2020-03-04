@@ -101,17 +101,22 @@ In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-blocks
 In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm
 ---------------------------------------------------------------------
 
-cp ~/scratch-gui/node_modules/scratch-vm/package.json .
+In package.json, replace "browser" section with
+
+  "browser": {
+    "fs": false,
+    "child_process": false
+  },
 
 npm install
-
-cp ~/scratch-gui/node_modules/scratch-vm/node_modules/nodeimu/* node_modules/nodeimu/
 
 cp -r ~/scratch-gui/node_modules/scratch-vm/src/extensions/* src/extensions/
 
 cp ~/scratch-gui/node_modules/scratch-vm/src/extension-support/* src/extension-support/
 
 [cp ~/scratch-gui/node_modules/scratch-vm/src/engine/* src/engine/]
+
+npm run build
 
 
 In ~/scratch-desktop/node_modules/scratch-gui
