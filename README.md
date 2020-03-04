@@ -103,10 +103,10 @@ In ~/scratch-desktop/node_modules/scratch-gui/node_modules/scratch-vm
 
 In package.json, replace "browser" section with
 
-  "browser": {
-    "fs": false,
-    "child_process": false
-  },
+    "browser": {
+        "fs": false,
+        "child_process": false
+    },
 
 npm install
 
