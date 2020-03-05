@@ -3,6 +3,7 @@ BUILD INSTRUCTIONS
 
 Items in [] may be unnecessary after upstreaming.
 
+
 Prepare image
 -------------
 
@@ -10,27 +11,7 @@ Install SSH key for access to raspberrypi-ui GitHub
 
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)	 (run without local repo overrides)
 
-sudo apt install (snapd squashfs-tools) closure-compiler
-
-(Reboot)
-
-(sudo snap install snapcraft --classic)
-
-(git clone https://git.kernel.org/pub/scm/fs/squashfs/squashfs-tools.git)
-
-(cd squashfs-tools/squashfs-tools)
-
-(Add #include <sys/sysmacros.h> to both mksquashfs.c and unsquashfs.c)
-
-(make)
-
-(cd ~/)
-
-(mkdir -p ~/.cache/electron-builder/appimage/appimage-9.1.0/linux-arm/)
-
-(cp /usr/bin/desktop-file-validate ~/.cache/electron-builder/appimage/appimage-9.1.0/linux-arm/)
-
-(cp ~/squashfs-tools/squashfs-tools/mksquashfs ~/.cache/electron-builder/appimage/appimage-9.1.0/linux-arm/)
+sudo apt install closure-compiler
 
 
 In ~/
@@ -45,18 +26,6 @@ In ~/scratch-desktop
 --------------------
 
 npm install
-
-????In node_modules/app-builder-lib/out/targets/targetFactory.js, in the function "computeArchToTargetNamesMap", change the line
-
-    const defaultArchs...
-    
-to
-
-    const defaultArchs = [“armv7l”];
-    
-or to 
-
-    const defaultArchs = ["arm64"];
     
 In scripts/electron-builder-wrapper.js, add the section
 
@@ -69,8 +38,8 @@ to the calculateTargets function, and (for 32-bit ARM builds only), change the r
     
 In electron-builder.yaml, add a section
 
-linux:
-  target: dir
+    linux:
+      target: dir
 
 
 In ~/scratch-desktop/node_modules
