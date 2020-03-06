@@ -1,7 +1,10 @@
+#!/bin/sh
 
-bash < (curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered > node.sh
 
-sudo apt install closure-compiler
+bash node.sh
+
+sudo apt install -y closure-compiler
 
 cd ~/
 

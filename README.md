@@ -106,4 +106,4 @@ In ~/scratch-desktop
 
 npm run dist
 
-Build will error at end, but built standalone files will be in dist/__appImage-armv7l
+Built standalone files will be in dist/linux-arm??-unpacked
